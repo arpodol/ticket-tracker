@@ -1,1 +1,14 @@
-<%= render 'layouts/navigation' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Open Tickets</th>
+      <th scope="col">Total Tickets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Project.all.each do |project| %>
+      <%= render 'project', project:project %>
+    <% end %>
+  </tbody>
+</table>
