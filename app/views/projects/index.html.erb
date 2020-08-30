@@ -1,4 +1,9 @@
 <h3>Projects</h3>
+<% if Project.all.empty? %>
+  <p>
+    There are no projects yet, why don't you create one?
+  </p>
+<% else %>
 <table class="table">
   <thead>
     <tr>
@@ -13,5 +18,7 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
+
 
 <%= link_to 'New Project', new_project_path %>
