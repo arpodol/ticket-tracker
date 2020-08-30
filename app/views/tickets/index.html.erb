@@ -1,3 +1,25 @@
 <h3>Tickets</h3>
-<%= render "list", tickets:@tickets %>
+<div>
+  <%= form_tag tickets_path, method: :get, enforce_utf8: false do %>
+  Show tickets from
+  <%= select_tag :project, options_from_collection_for_select(Project.all, :id, :name, params[:project]), include_blank: "All Projects" %>
+  with status
+  <%= select_tag :ticket_status, options_for_select(Ticket::STATUSES.map{|s| [s, s]}), id: :status, include_blank: "All statuses" %>
+  tagged
+  <%= select_tag :tag, options_from_collection_for_select(Tag.all, :id, :name, params[:tag]), include_blank: "-" %>
+  <%= submit_tag("Filter") %>
+  <%= link_to "reset", tickets_path %>
+<% end %>
+
+</div>
+
+<% if @tickets.empty? %>
+  <p>
+    There are no tickets matching the selected filters.
+    <%= link_to "Clear filters", tickets_path %>
+  </p>
+<% else %>
+  <%= render "list", tickets: @tickets %>
+<% end %>
+
 <%= link_to 'New Ticket', new_ticket_path %>
