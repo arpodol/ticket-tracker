@@ -1,0 +1,34 @@
+<%= render 'shared/errors', obj: @ticket %>
+
+<div class='well'>
+  <%= form_for @ticket do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :project %>
+      <%= f.collection_select :project_id, Project.order(:name),:id, :name, include_blank: false %>
+    </div>
+
+    <div>
+      <%= f.label :body %>
+      <%= f.text_area :body, rows: 5 %>
+    </div>
+
+    <div>
+      <%= f.label :status %>
+      <%= f.select :status, Ticket::STATUSES.map{|s| [s, s]}, id: :status %>
+    </div>
+
+    <div>
+      <%= f.label "Tags" %>
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |cb|%>
+        <% cb.label(class: "checkbox inline") {cb.check_box(class: "checkbox") + cb.text} %>
+        <% end %>
+    </div>
+
+    <%= f.submit(@ticket.new_record? ? 'Create Ticket' : 'Update Ticket', class: 'btn btn-primary') %>
+  <% end %>
+</div>

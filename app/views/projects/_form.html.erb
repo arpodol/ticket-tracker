@@ -1,0 +1,15 @@
+<%= render 'shared/errors', obj: @project %>
+
+<div class='well'>
+  <%= form_for @project do |f| %>
+    <div class='control-group'>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 5 %>
+    </div>
+    <%= f.submit(@project.new_record? ? 'Create Project' : 'Update Project', class: 'btn btn-primary') %>
+  <% end %>
+</div>

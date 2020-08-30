@@ -1,9 +1,9 @@
 <tr>
-  <th scope="row">
+  <td scope="row">
     <%=link_to project.name, project_path(project)%>
     <br/>
     <%=project.description%>
-  </th>
-  <td><%=project.tickets.count%></td>
+  </td>
+  <td><%=project.open_tickets%></td>
   <td><%=project.tickets.count%></td>
 </tr>
