@@ -13,13 +13,15 @@
 
 </div>
 
-<% if @tickets.empty? %>
+<% if @tickets.empty? && !Ticket.all.empty? %>
   <p>
     There are no tickets matching the selected filters.
     <%= link_to "Clear filters", tickets_path %>
   </p>
-<% else %>
+<% elsif !@tickets.empty?%>
   <%= render "list", tickets: @tickets %>
+<% else %>
+    <p>There are no tickets yet, why don't you create one?</p>
 <% end %>
 
 <%= link_to 'New Ticket', new_ticket_path %>
