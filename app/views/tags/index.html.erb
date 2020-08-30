@@ -1,4 +1,9 @@
 <h3>Tags</h3>
+<% if Tag.all.empty? %>
+<p>
+  There are no tags yet, why don't you create one?
+</p>
+<% else %>
 <table class="table">
   <thead>
     <tr>
@@ -21,5 +26,6 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
 <%= link_to 'New Tag', new_tag_path %>
