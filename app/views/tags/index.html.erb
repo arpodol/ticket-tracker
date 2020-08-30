@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <% countHash = Tag.joins(:tickets).group('Tag_id').count %>
-    <% @tags.each do |tag| %>
+    <% @tags.order(:name).each do |tag| %>
     <tr>
       <td><%=tag.name%></td>
       <td>

@@ -1,6 +1,6 @@
 <h3><%= @ticket.name %></h3>
 <p><%= @ticket.body %> </p>
-<p>Tags: <%= @ticket.tags.map{ |t| t.name }.join(', ')%></p>
+<p>Tags: <%= @ticket.tags.order(:name).map{ |t| t.name }.join(', ')%></p>
 <%= link_to 'Edit', edit_ticket_path(@ticket)%>
 <%= link_to 'Delete', @ticket, method: :delete, data: { confirm: 'Are you sure?' } %>
 
