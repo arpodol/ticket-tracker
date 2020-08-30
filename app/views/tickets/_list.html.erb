@@ -13,7 +13,7 @@
       <th scope="row">
         <%=link_to ticket.name, ticket_path(ticket)%>
       </th>
-      <td>TODO</td>
+      <td><%=ticket.assignee.try(:name)%></td>
       <td><%=ticket.status%></td>
       <td><%= ticket.tags.map{ |t| t.name }.join(', ')%></td>
       <td><%= link_to 'Edit', edit_ticket_path(ticket)%> or <%= link_to 'Delete', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>

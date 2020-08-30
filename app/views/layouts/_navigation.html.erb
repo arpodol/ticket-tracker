@@ -1,4 +1,5 @@
 <h1>Ticketing</h1>
+<nav class='left'>
 <div class='nav_item'>
   <%= link_to "Projects", root_path %>
 </div>
@@ -10,3 +11,25 @@
 <div class='nav_item'>
   <%= link_to "Tags", tags_path %>
 </div>
+</nav>
+
+<nav class="right">
+<% if logged_in? %>
+  <div class='nav-item'>
+    Welcome <%= current_user.name %>
+  </div>
+  <div class='nav_item'>
+    <%= link_to logout_path do %>
+      <i class='icon-circle-arrow-left'></i>
+        logout
+    <% end %>
+  </div>
+<% else #logged out%>
+  <div class='nav_item'>
+    <%= link_to 'Register', register_path, class: 'btn btn-success btn-small' %>
+  </div>
+  <div class='nav_item'>
+    <%= link_to 'Log in', login_path, class: 'btn btn-small' %>
+  </div>
+<% end %>
+</nav>

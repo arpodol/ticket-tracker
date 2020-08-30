@@ -16,30 +16,60 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-  .container {
-   margin-left: 135px
+ body {
+   margin: 0 2em;
  }
 
- .navbar .nav > li > a.brand {
-   padding-left: 0px;
+ .container {
+   max-width: 70rem;
+   margin: 0 auto;
  }
 
- .quiet {
-   color: #ababab;
+ .main-nav {
+   li {
+     display: inline;
+   }
+   overflow: hidden;
  }
 
- div.nav_item {
-   margin-left: 25px;
+ .left {
    float: left;
  }
+ .right {
+   float: right;
+ }
 
- .label, .badge  {
-   a, a:hover, a:focus {
-     color: #fff;
-     text-decoration: none;
+ select {
+   width: auto;
+ }
+
+ textarea {
+   min-height: 10rem;
+ }
+
+ th.number,
+ td.number {
+   text-align: center;
+ }
+
+ .ticket-filters {
+   select {
+     display: inline;
+   }
+   button {
+     padding: .4em .7em;
+     font-size: 12px;
    }
  }
 
- div.comment_votes {
-   padding: 10px;
+ .comment {
+   margin-bottom: 2em;
+ }
+
+ .reset {
+   font-size: .8rem;
+ }
+
+ .empty-list {
+   font-style: italic;
  }
