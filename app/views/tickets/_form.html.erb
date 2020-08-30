@@ -23,6 +23,11 @@
     </div>
 
     <div>
+      <%= f.label :assignee %>
+      <%= f.collection_select :assignee_id, User.order(:name), :id, :name, include_blank: "No one" %>
+    </div>
+
+    <div>
       <%= f.label "Tags" %>
       <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |cb|%>
         <% cb.label(class: "checkbox inline") {cb.check_box(class: "checkbox") + cb.text} %>

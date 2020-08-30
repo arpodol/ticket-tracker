@@ -10,14 +10,14 @@
     <tr>
       <th scope="col">Status</th>
       <th scope="col">Creator</th>
-      <th scope="col">Asignee</th>
+      <th scope="col">Assignee</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><%=@ticket.status%></td>
-      <td>TODO</td>
-      <td>TODO</td>
+      <td><%=@ticket.creator.name%></td>
+      <td><%=@ticket.assignee.try(:name)%></td>
     </tr>
   </tbody>
 </table>

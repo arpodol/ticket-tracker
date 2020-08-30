@@ -1,0 +1,22 @@
+<div class='well'>
+  <%= form_with(model: @user, local: true, url: register_path) do |f| %>
+  <%= render 'shared/errors', obj: @user %>
+    <div class='control-group'>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :email_address %>
+      <%= f.text_field :email_address %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :confirm_password %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <%= f.submit "Register", class: 'btn btn-success' %>
+  <% end %>
+</div>

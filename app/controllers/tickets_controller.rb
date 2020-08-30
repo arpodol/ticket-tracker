@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+
   def index
     @tickets = Ticket.all
   end
@@ -11,8 +13,8 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
-    #@ticket.creator = current_user TODO!
+
+    @ticket = Ticket.new(ticket_params.merge(creator: current_user))
 
     if @ticket.save
       flash[:notice] = "Your ticket was created."
@@ -22,7 +24,9 @@ class TicketsController < ApplicationController
     end
   end
 
-  def edit;end
+  def edit
+
+  end
 
   def update
     if @ticket.update(ticket_params)
@@ -42,7 +46,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:name, :body, :project_id, :status, tag_ids: [])
+    params.require(:ticket).permit(:name, :body, :project_id, :assignee_id, :status, tag_ids: [] )
   end
 
   def set_ticket
