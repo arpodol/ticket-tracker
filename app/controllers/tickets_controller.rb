@@ -4,6 +4,15 @@ class TicketsController < ApplicationController
 
   def index
     @tickets = Ticket.all
+    if params[:project].present?
+      @tickets = @tickets.where(project: params[:project])
+    end
+    if params[:ticket_status].present?
+      @tickets = @tickets.where(status: params[:ticket_status])
+    end
+    if params[:tag].present?
+      @tickets = @tickets.joins(:tags).where("tags.id": params[:tag])
+    end
   end
 
   def show;end
