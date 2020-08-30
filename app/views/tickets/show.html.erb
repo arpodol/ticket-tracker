@@ -1,0 +1,23 @@
+<h3><%= @ticket.name %></h3>
+<p><%= @ticket.body %> </p>
+<p>Tags: <%= @ticket.tags.map{ |t| t.name }.join(', ')%></p>
+<%= link_to 'Edit', edit_ticket_path(@ticket)%>
+<%= link_to 'Delete', @ticket, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Status</th>
+      <th scope="col">Creator</th>
+      <th scope="col">Asignee</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%=@ticket.status%></td>
+      <td>TODO</td>
+      <td>TODO</td>
+    </tr>
+  </tbody>
+</table>
