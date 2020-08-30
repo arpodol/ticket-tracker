@@ -1,0 +1,14 @@
+<%= form_for [@ticket, comment] do |f| %>
+  <%= render 'shared/errors', obj: @ticket %>
+    <div class='field'>
+      <%= f.label :Add_a_Comment %>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class='field'>
+      <%= label_tag :ticket_status %>
+      <%= select_tag :ticket_status, options_for_select(Ticket::STATUSES.map{|s| [s, s]}), id: :status, include_blank: "Don't change" %>
+    </div>
+
+    <%= f.submit(comment.new_record? ? 'Post Comment' : 'Update Comment', class: 'btn btn-primary') %>
+<% end %>

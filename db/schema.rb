@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_30_161713) do
+ActiveRecord::Schema.define(version: 2020_08_30_181435) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "creator_id", null: false
+    t.integer "ticket_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_comments_on_creator_id"
+    t.index ["ticket_id"], name: "index_comments_on_ticket_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +63,8 @@ ActiveRecord::Schema.define(version: 2020_08_30_161713) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "tickets"
+  add_foreign_key "comments", "users", column: "creator_id"
   add_foreign_key "tickets", "users", column: "assignee_id"
   add_foreign_key "tickets", "users", column: "creator_id"
 end
