@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :projects
 
-  resources :tickets
+  resources :tickets do
+    resources :comments
+  end
 
   resources :tags, except: :show
 end

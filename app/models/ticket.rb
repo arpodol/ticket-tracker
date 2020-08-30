@@ -6,6 +6,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :assignee, class_name: 'User', optional: true
 
   has_many :ticket_tags, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :tags, through: :ticket_tags
 
   validates :name, presence: true, length: {minimum: 5}

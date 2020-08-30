@@ -21,3 +21,18 @@
     </tr>
   </tbody>
 </table>
+
+<h3>Comments</h3>
+<% if @ticket.comments.any? %>
+  <% @ticket.comments.order(:created_at).reverse.each do |comment| %>
+    <div>
+      <h5><%= comment.body %></h5>
+      <em>posted by <%=comment.creator.name %></em>
+      <small><%= display_datetime(comment.created_at) %></small>
+      <%= link_to 'Edit', edit_ticket_comment_path(@ticket, comment)%>
+      <%= link_to 'Delete', [@ticket, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <br/>
+  <% end %>
+<% end %>
+<%= render 'comments/form', comment: Comment.new %>
