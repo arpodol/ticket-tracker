@@ -12,7 +12,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    #@project.creator = current_user TODO!
 
     if @project.save
       flash[:notice] = "Your project was created."

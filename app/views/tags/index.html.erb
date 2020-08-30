@@ -13,12 +13,13 @@
     </tr>
   </thead>
   <tbody>
+    <% countHash = Tag.joins(:tickets).group('Tag_id').count %>
     <% @tags.each do |tag| %>
     <tr>
       <td><%=tag.name%></td>
       <td>
         <%= link_to tickets_path(:tag => tag.id) do%>
-          <%= tag.tickets.count %>
+          <%= countHash[tag.id] || 0 %>
         <% end %>
       </td>
       <td><%= link_to 'Edit', edit_tag_path(tag)%> or <%= link_to 'Delete', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
