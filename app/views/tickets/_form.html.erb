@@ -35,5 +35,6 @@
     </div>
 
     <%= f.submit(@ticket.new_record? ? 'Create Ticket' : 'Update Ticket', class: 'btn btn-primary') %>
+    <%= link_to 'Back', tickets_path %>
   <% end %>
 </div>
